@@ -1,4 +1,6 @@
-import Head from 'next/head'
+import Head from "next/head";
+import getConfig from "next/config";
+const { publicRuntimeConfig } = getConfig();
 
 const Home = () => (
   <div className="container">
@@ -198,6 +200,12 @@ const Home = () => (
       }
     `}</style>
   </div>
-)
+);
 
-export default Home
+Home.getInitialProps = async ctx => {
+  console.log("I am here");
+  console.log(publicRuntimeConfig.staticFolder);
+  return {};
+};
+
+export default Home;
